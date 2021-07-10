@@ -17,6 +17,7 @@ function ApproveToken(props) {
     const [daiBalance, setDaiBalance] = useState(0);
     const [usdtBalance, setUsdtBalance] = useState(0);
     const [balance, setBalance] = useState([])
+    const [balanceInput, setbalanceInput] = useState(0)
 
   useEffect(() => {
     const init = async () => {
@@ -52,6 +53,7 @@ function ApproveToken(props) {
     const usdtBal = await usdt.methods
         .balanceOf(accounts[0])
         .call();
+
     const usdcBalance = usdcBal / 1000000;
     const fraxBalance = fraxBal / 10**18;
     const daiBalance = daiBal / 10**18;
@@ -103,28 +105,22 @@ function ApproveToken(props) {
             <div className="pb-8 ">
                 {!props.isApproved?<div className=" overflow-hidden">
                     <div className=" dark:bg-dark-600 dark:border-0 bg-white absolute w-full h-18 z-40 bg-opacity-100 rounded backdrop-filter flex items-center justify-center">
-                        <button onClick={props.handleClick} type="button" className="focus:outline-none  bg-transparent text-center py-2  h-full w-full border rounded-md font-bold border-blue-500 text-blue-500">
-                            <div className="flex justify-between px-2 items-center">
-                                <div className="flex items-center">
-                                    <div style={{ display: 'inline-block', maxWidth: '100%', overflow: 'hidden', position: 'relative', boxSizing: 'border-box', margin: 0 }}>
-                                        <div style={{ boxSizing: 'border-box', display: 'block', maxWidth: '100%' }}>
+                        <label className="focus:outline-none  bg-transparent text-center h-full w-full rounded-md font-bold text-blue-500">
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center bg-gray-500 py-2 px-2 w-22 rounded">
+                                    <div style={{ display: 'inline-block', overflow: 'hidden', position: 'relative', boxSizing: 'border-box', margin: 0}}>
+                                        <div style={{ boxSizing: 'border-box', display: 'block'}}>
                                             <img alt aria-hidden="true" role="presentation" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+" style={{ maxWidth: '100%', display: 'block', margin: 0, border: 'none', padding: 0 }} />
                                         </div>
-                                        <img src={props.logo} decoding="async" style={{ visibility: 'inherit', position: 'absolute', inset: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%' }} srcSet={props.logo} />
-                                    </div>
+                                        <img src={props.logo} decoding="async" style={{ visibility: 'inherit', position: 'absolute', inset: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%'}} srcSet={props.logo} />
+                                    </div> 
                                     <span className="dark:text-white text-black font-base ml-2">{props.name}</span>
                                 </div>
-                                <span> Approve</span>
-                                <div className="flex items-center invisible">
-                                    <div style={{ display: 'inline-block', maxWidth: '100%', overflow: 'hidden', position: 'relative', boxSizing: 'border-box', margin: 0 }}>
-                                        <div style={{ boxSizing: 'border-box', display: 'block', maxWidth: '100%' }}>
-                                            <img alt aria-hidden="true" role="presentation" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+" style={{ maxWidth: '100%', display: 'block', margin: 0, border: 'none', padding: 0 }} />
-                                        </div>
-                                        <img src={props.logo} decoding="async" style={{ visibility: 'inherit', position: 'absolute', inset: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%' }} srcSet={props.logo} />
-                                    </div>
-                                    <span className="text-black font-base ml-2">{props.name}</span>
-                                </div>
-                            </div>
+                                <input id="max" type="number" placeholder={0.0} className="dark:text-white text-black bold bg-transparent focus:outline-none" value={balanceInput} defaultValue onChange={(e)=>{setbalanceInput(e.target.value)}} />
+                            </div>                
+                        </label>
+                        <button onClick={()=>{setbalanceInput(props.balance)}} className="w-20 h-19 text-white z-50 rounded p-2 font-bold ml-auto focus:outline-none" style={{backgroundColor: '#0275d8'}}>
+                            Max
                         </button>
                     </div>
                     <br/>

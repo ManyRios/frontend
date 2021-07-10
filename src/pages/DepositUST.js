@@ -11,10 +11,10 @@ import erc20 from '../Abi/erc20.json'
 import DAI from '../static/media/dai.svg'
 import USDT from '../static/media/usdt.svg'
 import USDC from '../static/media/usdc.svg'
-import FRAX from '../static/media/frax.png'
+import BUSD from '../static/media/busd.svg'
 const BigNumber = require('bignumber.js')
 import ApproveToken from "../components/DepositUST/ApproveToken";
-
+ 
 import USTPool from '../static/media/ust-pool.svg'
 
 function DepositUST() {
@@ -207,11 +207,11 @@ function DepositUST() {
                                     <div className="dark:text-white text-2xl font-bold mb-6">
                                         Add Liquidity
             </div>
-                                    <ApproveToken onType= {(e) => setUSDCBalance(e.target.value)} handleClick={() => approveUSDC()} name="USDC" logo={USDC} balance={usdcBalance} isApproved={USDCApproved}/>
-                                    <ApproveToken onType= {(e) => setFRAXBalance(e.target.value)} handleClick={() =>  approveFRAX()} name="FRAX" logo={FRAX} balance={fraxBalance} isApproved={FRAXApproved}/>
                                     <ApproveToken onType= {(e) => setDAIBalance(e.target.value)} handleClick={() =>  approveDAI()} name="DAI" logo={DAI} balance={daiBalance} isApproved={DAIApproved}/>
+                                    <ApproveToken onType= {(e) => setFRAXBalance(e.target.value)} handleClick={() =>  approveFRAX()} name="BUSD" logo={BUSD} balance={fraxBalance} isApproved={FRAXApproved}/>
                                     <ApproveToken onType= {(e) => setUSDTBalance(e.target.value)} handleClick={() =>  approveUSDT()} name="USDT" logo={USDT} balance={usdtBalance} isApproved={USDTApproved}/>
-
+                                    <ApproveToken onType= {(e) => setUSDCBalance(e.target.value)} handleClick={() => approveUSDC()} name="USDC" logo={USDC} balance={usdcBalance} isApproved={USDCApproved}/>
+  
                                     <div className="transactionInfoItem ">
                                         <div className="slippage text-steel-300 text-sm ">
                                             <span>StableGaj and LPs will receive</span><span className="text-blue-400 mx-1">0.07%</span><span>of trading fees.</span>
@@ -277,7 +277,7 @@ function DepositUST() {
                                     </div>
                                     <div className="grid grid-cols-2 mb-4">
                                         <div className="grid grid-cols-2">
-                                            <span><img src={FRAX} width="25px" style={{float:'left', marginRight: '3px'}}/><span style={{lineHeight: '25px'}} className="react-loading-skeleton css-1q79kkk-skeletonStyles-Skeleton"> FRAX‌ :</span></span>
+                                            <span><img src={BUSD} width="25px" style={{float:'left', marginRight: '3px'}}/><span style={{lineHeight: '25px'}} className="react-loading-skeleton css-1q79kkk-skeletonStyles-Skeleton"> BUSD :</span></span>
                                         </div>
                                         <span className="font-bold text-right"><span><span className="react-loading-skeleton css-1q79kkk-skeletonStyles-Skeleton">{FRAXBalance}‌</span></span></span>
                                     </div>
